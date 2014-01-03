@@ -1,0 +1,2 @@
+#!/usr/bin/env sh
+find . -name '*.js' -or -name '*.jsx' -or -name '*.coffee' -or -name '*.json' | xargs grep -n --color=auto $*

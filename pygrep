@@ -1,0 +1,2 @@
+#!/usr/bin/env sh
+find . -name '*.py' -or -name '*.pyx' -and -not -name '.#*' | xargs grep -n --color=auto "$@"

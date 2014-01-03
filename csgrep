@@ -1,0 +1,2 @@
+#!/usr/bin/env sh
+find . -name '*.coffee' -or -name '*.cs' | xargs grep -n --color=auto $*

@@ -1,0 +1,10 @@
+#!/usr/bin/env sh
+fibrous=`npm bin`/fibrous
+
+if [ -e $fibrous ]; then
+    echo "Using local fibrous: $fibrous"
+     $fibrous --coffee $*
+else
+    echo "Using global fibrous"
+    fibrous --coffee $*
+fi
