@@ -1,0 +1,27 @@
+#!/usr/bin/env python
+
+import logging
+import subprocess
+import sys
+import os
+
+try:
+    cmd = sys.argv[1]
+except IndexError:
+    sys.stderr.write("Usage: npm-run <command> [args...]\n")
+    sys.exit(1)
+
+p = subprocess.Popen('npm bin', shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+output, errors = p.communicate()
+
+npm_bin = output.strip()
+
+npm_bin_program = "%s/%s" % (npm_bin, cmd)
+
+if os.path.exists(npm_bin_program):
+    print "Using local %s at %s" % (cmd, npm_bin_program)
+    sys.exit(subprocess.call([npm_bin_program] + sys.argv[2:]))
+else:
+    print "Using global %s" % (cmd)
+    sys.exit(subprocess.call(sys.argv[1:], shell=True))
+
