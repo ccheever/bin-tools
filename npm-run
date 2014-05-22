@@ -23,5 +23,5 @@ if os.path.exists(npm_bin_program):
     sys.exit(subprocess.call([npm_bin_program] + sys.argv[2:]))
 else:
     print "Using global %s" % (cmd)
-    sys.exit(subprocess.call(sys.argv[1:], shell=True))
+    sys.exit(subprocess.call(["/usr/bin/env"] + sys.argv[1:]))
 
